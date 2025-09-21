@@ -48,22 +48,27 @@ function sketch() {
 
     const cx = width * 0.5,
         cy = height * 0.5,
-        w = width * 0.01,
-        h = height * 0.1;
+
+        // create a horizontal strip-like rectangle
+        w = width * 0.1,
+        h = height * 0.01;
 
     const slices = 12,
       slice = rad(360 / slices),
-      radius = width * 0.3;
+      radius = width * 0.2;
 
     let x, y;
     for(let i = 0; i < slices; i += 1) {
       const angle = slice * i;
 
+      // Get the position and rotation co-ordinates for the strip
       x = Math.cos(angle) * radius + cx;
-      y = Math.sin(angle) * radius + cy
-
+      y = Math.sin(angle) * radius + cy;
 
       ctx.save();
+      if(angle == 3 * Math.PI/2) {
+        ctx.fillStyle = "rgba(233, 41, 41, 1)";
+      }
       ctx.translate(x, y);
       ctx.rotate(angle);
       ctx.beginPath();
