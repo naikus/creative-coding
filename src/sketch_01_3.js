@@ -1,4 +1,5 @@
 import canvasSketch from "canvas-sketch";
+import {math, random} from "canvas-sketch-util";
 
 /**
  * @typedef SketchContext
@@ -18,31 +19,6 @@ const settings = {
     fillStyle: "rgba(21, 31, 41, 1)",
     strokeStyle: "rgb(245, 245, 245)"
   };
-
-function rad(deg) {
-  return deg * Math.PI / 180;
-}
-
-function degrees(rad) {
-  return rad * 180 / Math.PI;
-}
-
-function rand(...args) {
-  const len = args.length;
-  if(!len) {
-    return Math.random();
-  }
-  let start, end;
-  if(len === 1) {
-    start = 0;
-    end = args[0];
-  }else if(len >= 2) {
-    [start, end] = args;
-  }
-  return Math.floor(Math.random() * (end - start)) + start;
-  // Uncomment this if you want fractional random numbers between start and end
-  // return Math.random() * (end - start) + start;
-}
 
 /**
  * Sets up the canvas with defaults
@@ -74,8 +50,8 @@ function sketch() {
         w = width * 0.1,
         h = height * 0.01;
 
-    const slices = 12,
-      slice = rad(360 / slices),
+    const slices = 24,
+      slice = math.degToRad(360 / slices),
       radius = width * 0.2;
 
     let x, y;
@@ -86,6 +62,8 @@ function sketch() {
       x = Math.cos(angle) * radius + cx;
       y = Math.sin(angle) * radius + cy;
 
+
+      // Block 1
       ctx.save();
       // A red tick at 12 O'Clock
       if(angle == 3 * Math.PI/2) {
@@ -93,11 +71,24 @@ function sketch() {
       }
       ctx.translate(x, y);
       ctx.rotate(angle);
-      ctx.scale(1, rand(1, 3));
+      ctx.scale(random.range(.2, .5), random.range(0.1, 2));
       ctx.beginPath();
-      ctx.rect(-w * 0.5, -h * 0.5, w, h);
+      ctx.rect(w * random.range(0.1 , 1.5), -h * 0.5, w, h);
       ctx.fill();
       ctx.restore();
+
+
+      // Block 2
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(angle);
+      ctx.lineWidth = random.range(3, 7);
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * random.range(0.7, 1.2), slice * random.range(1, -8), slice);
+      ctx.stroke();
+      // ctx.fill();
+      ctx.restore();
+
     }
   };
 }
