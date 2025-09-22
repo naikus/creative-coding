@@ -66,6 +66,7 @@ function sketch() {
       y = Math.sin(angle) * radius + cy;
 
       ctx.save();
+      // A red tick at 12 O'Clock
       if(angle == 3 * Math.PI/2) {
         ctx.fillStyle = "rgba(233, 41, 41, 1)";
       }
