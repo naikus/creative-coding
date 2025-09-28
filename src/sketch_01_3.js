@@ -12,7 +12,7 @@ const settings = {
     // dimensions: [1024, 1024]
     bleed: 10,
     // export settings
-    file: "sketch_01_3.js"
+    file: "sketch_01_3.png"
     // ,animate: true
   },
 
@@ -46,7 +46,6 @@ function setup(sc) {
 }
 
 function sketch(sc) {
-  // setup(sc);
   /**
    * @param {SketchContext} sc
    */
@@ -68,7 +67,7 @@ function sketch(sc) {
 
     let x, y;
     for(let i = 0; i < slices; i += 1) {
-      const angle = slice * i;
+      const angle = slice * i
 
       // Get the position and rotation co-ordinates for the strip
       x = Math.cos(angle) * radius + cx;
@@ -77,13 +76,9 @@ function sketch(sc) {
 
       // Block 1
       ctx.save();
-      // A red tick at 12 O'Clock
-      if(angle == 3 * Math.PI/2) {
-        ctx.fillStyle = "rgba(233, 41, 41, 1)";
-      }
       ctx.translate(x, y);
       ctx.rotate(angle);
-      ctx.scale(random.range(0.2, 0.5), random.range(0.2, 2));5
+      ctx.scale(random.range(0.2, 0.5), random.range(0.2, 2));
       ctx.beginPath();
       ctx.rect(-w * random.range(0.2, 2), -h * 0.5, w * random.range(1, 2), h);
       ctx.fillStyle = colors[random.rangeFloor(0, colors.length)];
@@ -103,7 +98,6 @@ function sketch(sc) {
       ctx.stroke();
       // ctx.fill();
       ctx.restore();
-
     }
   };
 }

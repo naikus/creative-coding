@@ -11,13 +11,12 @@ const settings = {
     // dimensions: [1024, 1024]
     bleed: 10,
     // export settings
-    file: "sketch_01.js"
+    // file: "sketch"
   },
 
   options = {
-    fillStyle: "rgba(21, 31, 41, 1)",
-    strokeStyle: "rgb(245, 245, 245)",
-    margin: 5
+    fillStyle: "rgba(21, 26, 41, 1)",
+    strokeStyle: "rgb(245, 245, 245)"
   };
 
 
@@ -30,7 +29,7 @@ function setup(sc) {
   const {context, width, height} = sc, margin = options.margin;
   context.fillStyle = options.fillStyle;
   context.strokeStyle = options.strokeStyle;
-  context.fillRect(margin, margin, width - (margin * 2), height - (margin * 2));
+  context.fillRect(margin, margin, width, height);
 }
 
 function sketch() {
@@ -38,9 +37,10 @@ function sketch() {
    * @param {SketchContext} drawContext
    */
   return function(sc) {
-    const {context, width, height} = sc;
     setup(sc);
-
+    const {context, width, height} = sc;
+    ctx.fillStyle = "rgba(217, 222, 223, 1)";
+    ctx.strokeStyle = "rgba(212, 221, 228, 1)";
   };
 }
 
