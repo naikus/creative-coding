@@ -28,7 +28,7 @@ const settings = {
   ],
 
   options = {
-    fillStyle: "rgb(26, 27, 38)",
+    fillStyle: "rgba(15, 15, 20, 1)",
     strokeStyle: "rgb(245, 245, 245)"
   };
 
@@ -101,14 +101,22 @@ function sketch(sc) {
   const {width, height} = sc,
       slices = 48,
       slice = math.degToRad(360 / slices),
-      radius = width * 0.3,
-      rects = [],
-      arcs = [];
+      radius = width * 0.3;
 
-  for(let i = 0; i < slices; i += 1) {
-    rects.push(rect(width * 0.1, height * 0.01));
-    arcs.push(arc(radius, slice))
-  }
+      let rects, arcs;
+      const init = () => {
+        const {width, height} = sc, radius = width * 0.3;
+
+        rects = [];
+        arcs = [];
+        for(let i = 0; i < slices; i += 1) {
+          rects.push(rect(width * 0.1, height * 0.01));
+          arcs.push(arc(radius, slice))
+        }
+      };
+
+  window.addEventListener("resize", init);
+  init();
 
   /**
    * @param {SketchContext} sc
