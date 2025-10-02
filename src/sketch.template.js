@@ -15,7 +15,7 @@ const settings = {
   },
 
   options = {
-    fillStyle: "rgba(21, 26, 41, 1)",
+    fillStyle: "rgba(15, 15, 20, 1)",
     strokeStyle: "rgb(245, 245, 245)"
   };
 
@@ -29,7 +29,7 @@ function setup(sc) {
   const {context, width, height} = sc, margin = options.margin;
   context.fillStyle = options.fillStyle;
   context.strokeStyle = options.strokeStyle;
-  context.fillRect(margin, margin, width, height);
+  context.fillRect(0, 0, width, height);
 }
 
 function sketch() {
@@ -38,7 +38,7 @@ function sketch() {
    */
   return function(sc) {
     setup(sc);
-    const {context, width, height} = sc;
+    const {context: ctx, width, height} = sc;
     ctx.fillStyle = "rgba(217, 222, 223, 1)";
     ctx.strokeStyle = "rgba(212, 221, 228, 1)";
   };

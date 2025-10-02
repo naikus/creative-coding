@@ -9,7 +9,7 @@ import {math, random} from "canvas-sketch-util";
  */
 
 const settings = {
-    // dimensions: [1024, 1024]
+    // dimensions: [1024, 1024],
     bleed: 10,
     // export settings
     animate: true
