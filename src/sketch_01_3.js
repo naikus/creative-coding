@@ -35,7 +35,7 @@ const settings = {
 
 /**
  * Sets up the canvas with defaults
- * @param {SketchContext} sc 
+ * @param {SketchContext} sc
  * @param {Object} opts
  */
 function setup(sc) {
